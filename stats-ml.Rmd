@@ -1,9 +1,11 @@
 ---
 title: "Statistics and ML"
-subtitle: "MSSP Practicum Discussion"
 author: "MSSP Practicum II"
 date: "2023-01-24"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
+subtitle: MSSP Practicum Discussion
 ---
 
 ```{r setup, include=FALSE}
@@ -65,6 +67,10 @@ Questions and tasks:
 
 - Comment on the fit, plot residuals and comment on them.
 - Comment on the prediction; does it seem reasonable?
+```{r}
+plot(residuals(m))
+plot(m)
+```
 
 
 ## ML 1: LOESS
@@ -74,12 +80,14 @@ m <- loess(cover ~ distance, data = canopy)
 ggplot(canopy, aes(distance, cover)) + geom_point(col = "gray") +
   geom_line(aes(distance[idx], fitted(m)[idx]))
 predict(m, data.frame(distance = 0.5), se = TRUE)
+
 ```
 
 Questions and tasks:
 
 - Check the definition of the `loess` function; how does it differ from the previous approach?
 - Comment on the fit; does it seem reasonable?
+
 - Comment on the prediction, including the SE.
 
 
